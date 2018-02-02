@@ -1,0 +1,6 @@
+C:\Users\Salivan\source\repos\Lecture_1_3\Lecture_1_3\bin\Debug\Lecture_1_3.exe.config
+C:\Users\Salivan\source\repos\Lecture_1_3\Lecture_1_3\bin\Debug\Lecture_1_3.exe
+C:\Users\Salivan\source\repos\Lecture_1_3\Lecture_1_3\bin\Debug\Lecture_1_3.pdb
+C:\Users\Salivan\source\repos\Lecture_1_3\Lecture_1_3\obj\Debug\Lecture_1_3.csproj.CoreCompileInputs.cache
+C:\Users\Salivan\source\repos\Lecture_1_3\Lecture_1_3\obj\Debug\Lecture_1_3.exe
+C:\Users\Salivan\source\repos\Lecture_1_3\Lecture_1_3\obj\Debug\Lecture_1_3.pdb
