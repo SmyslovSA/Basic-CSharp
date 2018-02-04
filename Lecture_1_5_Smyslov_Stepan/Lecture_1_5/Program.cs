@@ -14,15 +14,16 @@ namespace Lecture_1_5
             Console.Write("Choose variant of running string (1 or 2):");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             ConsoleKey number = consoleKeyInfo.Key;
+            char[] runningStringArray = new char[15];
+            string runningWords = $"Московское время {DateTime.Now}. Говорят и показывают все телестанции страны.";
             switch (number)
             {
                 case ConsoleKey.D1:
+                case ConsoleKey.NumPad1:
                     #region variant1
                     /* Заполняет массив от нуля до последнего индекса, после чего превращает массив в бегущую строку.
                        После окончания бегущей строки ждет её окончания в приложении и запускает цикл заново. */
                     Console.WriteLine();
-                    char[] runningStringArray = new char[15];
-                    string runningWords = $"Московское время {DateTime.Now}. Говорят и показывают все телестанции страны.";
                     for (; ; )
                     {
                         for (int i = 0; i < runningWords.Length; i++)
@@ -50,21 +51,20 @@ namespace Lecture_1_5
                     }
                     #endregion
                 case ConsoleKey.D2:
+                case ConsoleKey.NumPad2:
                     #region variant2
                     // Запускает бегущую строку. После окончания сразу же её зацикливает.
                     Console.WriteLine();
-                    char[] runningStringArray2 = new char[15];
-                    string runningWords2 = $"Московское время {DateTime.Now}. Говорят и показывают все телестанции страны.";
                     for (; ; )
                     {
-                        for (int i = 0; i < runningWords2.Length; i++)
+                        for (int i = 0; i < runningWords.Length; i++)
                         {
                             {
-                                for (int j = 0; j < runningStringArray2.Length - 1; j++)
-                                    runningStringArray2[j] = runningStringArray2[j + 1];
-                                runningStringArray2[runningStringArray2.Length - 1] = runningWords2[i];
+                                for (int j = 0; j < runningStringArray.Length - 1; j++)
+                                    runningStringArray[j] = runningStringArray[j + 1];
+                                runningStringArray[runningStringArray.Length - 1] = runningWords[i];
                             }
-                            Console.Write(runningStringArray2);
+                            Console.Write(runningStringArray);
                             Thread.Sleep(500);
                             Console.Clear();
                         }

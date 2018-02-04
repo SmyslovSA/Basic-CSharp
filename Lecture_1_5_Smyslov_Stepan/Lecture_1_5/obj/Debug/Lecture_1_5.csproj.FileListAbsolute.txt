@@ -5,3 +5,10 @@ D:\Basic-CSharp\Lecture_1_5\Lecture_1_5\obj\Debug\Lecture_1_5.csprojResolveAssem
 D:\Basic-CSharp\Lecture_1_5\Lecture_1_5\obj\Debug\Lecture_1_5.csproj.CoreCompileInputs.cache
 D:\Basic-CSharp\Lecture_1_5\Lecture_1_5\obj\Debug\Lecture_1_5.exe
 D:\Basic-CSharp\Lecture_1_5\Lecture_1_5\obj\Debug\Lecture_1_5.pdb
+D:\Basic-CSharp\Lecture_1_5_Smyslov_Stepan\Lecture_1_5\bin\Debug\Lecture_1_5.exe.config
+D:\Basic-CSharp\Lecture_1_5_Smyslov_Stepan\Lecture_1_5\bin\Debug\Lecture_1_5.exe
+D:\Basic-CSharp\Lecture_1_5_Smyslov_Stepan\Lecture_1_5\bin\Debug\Lecture_1_5.pdb
+D:\Basic-CSharp\Lecture_1_5_Smyslov_Stepan\Lecture_1_5\obj\Debug\Lecture_1_5.csprojResolveAssemblyReference.cache
+D:\Basic-CSharp\Lecture_1_5_Smyslov_Stepan\Lecture_1_5\obj\Debug\Lecture_1_5.csproj.CoreCompileInputs.cache
+D:\Basic-CSharp\Lecture_1_5_Smyslov_Stepan\Lecture_1_5\obj\Debug\Lecture_1_5.exe
+D:\Basic-CSharp\Lecture_1_5_Smyslov_Stepan\Lecture_1_5\obj\Debug\Lecture_1_5.pdb
