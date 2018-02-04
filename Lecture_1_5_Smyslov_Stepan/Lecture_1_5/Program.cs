@@ -48,7 +48,7 @@ namespace Lecture_1_5
                             Console.Clear();
                         }
                     }
-                #endregion
+                    #endregion
                 case ConsoleKey.D2:
                     #region variant2
                     // Запускает бегущую строку. После окончания сразу же её зацикливает.
@@ -69,7 +69,7 @@ namespace Lecture_1_5
                             Console.Clear();
                         }
                     }
-                #endregion
+                    #endregion
                 default:
                     Console.WriteLine("You choose wrong variant");
                     Console.ReadLine();
