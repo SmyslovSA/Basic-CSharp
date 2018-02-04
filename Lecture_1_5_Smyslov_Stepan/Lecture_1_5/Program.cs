@@ -11,7 +11,7 @@ namespace Lecture_1_5
     {
         static void Main(string[] args)
         {
-            Console.Write("Choose variant of running string (1 or 2):");
+            Console.Write("Choose variant of running string (1 or 2): ");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             ConsoleKey number = consoleKeyInfo.Key;
             char[] runningStringArray = new char[15];
@@ -71,6 +71,7 @@ namespace Lecture_1_5
                     }
                     #endregion
                 default:
+                    Console.WriteLine();
                     Console.WriteLine("You choose wrong variant");
                     Console.ReadLine();
                     break;
