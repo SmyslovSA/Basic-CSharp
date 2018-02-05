@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 
 namespace Lecture_1_5
@@ -24,8 +20,9 @@ namespace Lecture_1_5
                     /* Заполняет массив от нуля до последнего индекса, после чего превращает массив в бегущую строку.
                        После окончания бегущей строки ждет её окончания в приложении и запускает цикл заново. */
                     Console.WriteLine();
-                    for (; ; )
+                    for (; ; ) // TODO Чисто эстетически while(true) выглядит лучше =)
                     {
+                        // TODO перемудрили. Слишком много массивов и циклов =) Но да, оно работает
                         for (int i = 0; i < runningWords.Length; i++)
                         {
                             if (runningStringArray.Length - i <= 0)
@@ -57,12 +54,13 @@ namespace Lecture_1_5
                     Console.WriteLine();
                     for (; ; )
                     {
-                        for (int i = 0; i < runningWords.Length; i++)
+                        // TODO можно отлично заменить на Foreach
+                        foreach (char letter in runningWords)
                         {
                             {
                                 for (int j = 0; j < runningStringArray.Length - 1; j++)
                                     runningStringArray[j] = runningStringArray[j + 1];
-                                runningStringArray[runningStringArray.Length - 1] = runningWords[i];
+                                runningStringArray[runningStringArray.Length - 1] = letter;
                             }
                             Console.Write(runningStringArray);
                             Thread.Sleep(500);
