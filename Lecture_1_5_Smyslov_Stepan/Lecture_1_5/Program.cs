@@ -22,29 +22,25 @@ namespace Lecture_1_5
                     Console.WriteLine();
                     while (true)
                     {
-                        // TODO перемудрили. Слишком много массивов и циклов =) Но да, оно работает
-                        for (int i = 0; i < runningWords.Length; i++)
+                        // DONE перемудрили. Слишком много массивов и циклов =) Но да, оно работает
+                        int j = 0;
+                        for (int i = 1; i < runningWords.Length+runningStringArray.Length; i++)
                         {
-                            if (runningStringArray.Length - i <= 0)
+                            if (i >= runningStringArray.Length && i < runningWords.Length)
                             {
-                                for (int j = 0; j < runningStringArray.Length - 1; j++)
-                                    runningStringArray[j] = runningStringArray[j + 1];
-                                runningStringArray[runningStringArray.Length - 1] = runningWords[i];
+                                Console.Write(runningWords.Substring(j, runningStringArray.Length));
+                                j++;
                             }
-                            else runningStringArray[i] = runningWords[i];
-                            Console.Write(runningStringArray);
+                            else if (i >= runningWords.Length)
+                            {
+                                Console.Write(runningWords.Substring(j));
+                                j++;
+                            }
+                            else
+                                Console.Write(runningWords.Substring(j, i)); 
                             Thread.Sleep(500);
-                            Console.Clear();
+                            Console.Clear();                           
                         }
-                       for (int i = 1; i < runningStringArray.Length; i++)
-                            {
-                                for (int j = 1; j < runningStringArray.Length; j++)
-                                    runningStringArray[j - 1] = runningStringArray[j];
-                                runningStringArray[runningStringArray.Length - i] = ' ';
-                                Console.Write(runningStringArray);
-                                Thread.Sleep(500);
-                                Console.Clear();
-                            }
                     }
                 #endregion
                 case ConsoleKey.D2:
