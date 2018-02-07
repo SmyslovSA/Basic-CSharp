@@ -36,7 +36,7 @@ namespace Lecture_1_6
                             case ConsoleKey.D1:
                             case ConsoleKey.NumPad1:
                                 Console.WriteLine("Set product name: ");
-                                string productAdd = Console.ReadLine().ToString();
+                                string productAdd = Console.ReadLine();
                                 while (string.IsNullOrWhiteSpace(productAdd) | purchase.Keys.Contains(productAdd))
                                 {
                                     Console.WriteLine("Wrong or duplicate name, set another name.");
@@ -151,7 +151,7 @@ namespace Lecture_1_6
                                 string recordTime = Console.ReadLine();
                                 if (daySchedule.Keys.Contains(recordTime))
                                 {
-                                    Console.WriteLine("Duplicate times.Wrong Entry");
+                                    Console.WriteLine("Duplicate times. Wrong Entry");
                                     break;
                                 }
                                 Console.WriteLine("Set name of record:");
