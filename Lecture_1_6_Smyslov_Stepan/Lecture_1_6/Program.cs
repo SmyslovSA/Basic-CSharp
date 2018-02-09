@@ -37,6 +37,7 @@ namespace Lecture_1_6
                             case ConsoleKey.NumPad1:
                                 Console.WriteLine("Set product name: ");
                                 string productAdd = Console.ReadLine();
+
                                 // TODO двойное ИЛИ для исключения ненужной проверки.
                                 while (string.IsNullOrWhiteSpace(productAdd) | purchase.Keys.Contains(productAdd))
                                 {
@@ -109,6 +110,10 @@ namespace Lecture_1_6
                                 if (isParse)
                                 {
                                     
+
+                                bool isParse = UInt32.TryParse(Console.ReadLine(), out uint expPrice);
+                                if (isParse)
+                                {
                                     foreach (KeyValuePair<string, decimal> t in purchase)
                                     {
                                         if (t.Value > expPrice)
@@ -151,6 +156,8 @@ namespace Lecture_1_6
                                 // TODO Foreach var dow in DayOfWeek write "{dow}-{(int)dow}"... Там проще =)
                                 bool isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayAdd);
                                 // TODO MSDN тоже надо пользовать =) Enum.IsDefined(typeof(DayOfWeek), userDayAdd)
+
+                                bool isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayAdd);
                                 if ((!isParse) || (userDayAdd < DayOfWeek.Sunday || userDayAdd > DayOfWeek.Saturday))
                                 {
                                     Console.WriteLine("Wrong entry");
@@ -167,6 +174,7 @@ namespace Lecture_1_6
                                 string recordName = Console.ReadLine();
                                 daySchedule.Add(recordTime, recordName);
                                 // TODO а вот тут у вас ошибка серьёзная... в итоге все дни недели ссылаются на 1 словарь 
+
                                 weekSchedule.Add(userDayAdd, daySchedule);
                                 break;
                             case ConsoleKey.D2:
@@ -175,6 +183,9 @@ namespace Lecture_1_6
                                 Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
                                 isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayRemove);
                                 // TODO смотрим выже
+
+                                Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
+                                isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayRemove);
                                 if ((!isParse) || (userDayRemove < DayOfWeek.Sunday || userDayRemove > DayOfWeek.Saturday))
                                 {
                                     Console.WriteLine("Wrong entry");
@@ -189,6 +200,9 @@ namespace Lecture_1_6
                                 Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
                                 isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayShow);
                                 // TODO смотрим выже
+
+                                Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
+                                isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayShow);
                                 if ((!isParse) || (userDayShow < DayOfWeek.Sunday || userDayShow > DayOfWeek.Saturday))
                                 {
                                     Console.WriteLine("Wrong entry");
@@ -196,6 +210,7 @@ namespace Lecture_1_6
                                 }
                                 if (weekSchedule.Keys.Contains(userDayShow))
                                     // TODO та же ошибка что и в случае корзины - если проверили наличие можно было обращаться через [ключ] 
+
                                     foreach (KeyValuePair<DayOfWeek, Dictionary<string, string>> day in weekSchedule)
                                     {
                                         if (userDayShow == day.Key)
@@ -217,6 +232,7 @@ namespace Lecture_1_6
                                 foreach (KeyValuePair<DayOfWeek, Dictionary<string, string>> day in weekSchedule)
                                     Console.WriteLine($"Schedule on {day.Key} is ");
                                     // TODO я так понимаю ты вы забыли сделать вывод day.valye?
+
                                 break;
                             case ConsoleKey.D5:
                             case ConsoleKey.NumPad5:
