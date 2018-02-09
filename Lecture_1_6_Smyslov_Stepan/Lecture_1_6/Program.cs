@@ -111,8 +111,12 @@ namespace Lecture_1_6
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
                     #region option2
-                    Dictionary<string, string> daySchedule = new Dictionary<string, string>();
+                    Dictionary<string, string>[] daySchedule = new Dictionary<string, string>[7];
                     Dictionary<DayOfWeek, Dictionary<string, string>> weekSchedule = new Dictionary<DayOfWeek, Dictionary<string, string>>();
+                    for (int i = 0; i < daySchedule.Length; i++)
+                        daySchedule[i] = new Dictionary<string, string>();
+                    foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+                        weekSchedule.Add((DayOfWeek)day, daySchedule[(int)day]);
                     while (true)
                     {
                         Console.WriteLine("Please choose option:\n" +
@@ -131,57 +135,67 @@ namespace Lecture_1_6
                                 Console.WriteLine("Choose day:");
                                 foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
                                 Console.WriteLine($"{day}-{(int)day}");
-                                bool isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayAdd);
-                                if (Enum.IsDefined(typeof(DayOfWeek), userDayAdd))
+                                DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayAdd);
+                                if (!Enum.IsDefined(typeof(DayOfWeek), userDayAdd))
                                 {
                                     Console.WriteLine("Wrong entry");
                                     break;
                                 }
                                 Console.WriteLine("Set time of record:");
                                 string recordTime = Console.ReadLine();
-                                if (daySchedule.Keys.Contains(recordTime))
+                                if (daySchedule[(int)userDayAdd].Keys.Contains(recordTime))
                                 {
                                     Console.WriteLine("Duplicate times. Wrong Entry");
                                     break;
                                 }
                                 Console.WriteLine("Set name of record:");
                                 string recordName = Console.ReadLine();
-                                daySchedule.Add(recordTime, recordName);
-                                // TODO а вот тут у вас ошибка серьёзная... в итоге все дни недели ссылаются на 1 словарь 
-                                weekSchedule.Add(userDayAdd, daySchedule);
+                                daySchedule[(int)userDayAdd].Add(recordTime, recordName);
                                 break;
                             case ConsoleKey.D2:
                             case ConsoleKey.NumPad2:
                                 Console.WriteLine("Choose day:");
                                 foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
                                     Console.WriteLine($"{day}-{(int)day}");
-                                isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayRemove);
-                                if (Enum.IsDefined(typeof(DayOfWeek), userDayRemove))
+                                DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayRemove);
+                                if (!Enum.IsDefined(typeof(DayOfWeek), userDayRemove))
                                 {
                                     Console.WriteLine("Wrong entry");
                                     break;
                                 }
-                                weekSchedule.Remove(userDayRemove);
-                                Console.WriteLine($"Record for {userDayRemove} was removed");
+                                if (daySchedule[(int)userDayRemove].Count == 0)
+                                {
+                                    Console.WriteLine($"No records for {userDayRemove}");
+                                    break;
+                                }
+                                Console.WriteLine("What time you want to delete?");
+                                foreach (var pair in daySchedule[(int)userDayRemove])
+                                    Console.Write($"{pair.Key} ({pair.Value})\t");
+                                string userRemove = Console.ReadLine();
+                                if (daySchedule[(int)userDayRemove].ContainsKey(userRemove))
+                                {
+                                    daySchedule[(int)userDayRemove].Remove(userRemove);
+                                    Console.WriteLine($"Record  was removed");
+                                }
+                                else Console.WriteLine("No record for that time");
                                 break;
                             case ConsoleKey.D3:
                             case ConsoleKey.NumPad3:
                                 Console.WriteLine("Choose day:");
                                 foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
                                     Console.WriteLine($"{day}-{(int)day}");
-                                isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayShow);
-                                if (Enum.IsDefined(typeof(DayOfWeek), userDayShow))
+                                DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayShow);
+                                if (!Enum.IsDefined(typeof(DayOfWeek), userDayShow))
                                 {
                                     Console.WriteLine("Wrong entry");
                                     break;
                                 }
-                                if (weekSchedule.Keys.Contains(userDayShow))
-                                    // TODO та же ошибка что и в случае корзины - если проверили наличие можно было обращаться через [ключ] 
-                                    foreach (KeyValuePair<DayOfWeek, Dictionary<string, string>> day in weekSchedule)
-                                    {
-                                        if (userDayShow == day.Key)
-                                            Console.WriteLine($"Schedule on {day.Key} is ");
-                                    }
+                                if (daySchedule[(int)userDayShow].Keys.Count > 0)
+                                {
+                                    Console.WriteLine($"Records for {userDayShow}:");
+                                    foreach (var key in daySchedule[(int)userDayShow])
+                                        Console.WriteLine($"{key.Key} -- {key.Value}");
+                                }
                                 else
                                     Console.WriteLine($"On {userDayShow} no records");
                                 break;
@@ -193,9 +207,12 @@ namespace Lecture_1_6
                                     break;
                                 }
                                 Console.WriteLine("Schedule on week:");
-                                foreach (KeyValuePair<DayOfWeek, Dictionary<string, string>> day in weekSchedule)
-                                    Console.WriteLine($"Schedule on {day.Key} is ");
-                                    // TODO я так понимаю ты вы забыли сделать вывод day.valye?
+                                foreach (var day in weekSchedule)
+                                {
+                                    Console.WriteLine($"Schedule on {day.Key} is:");
+                                    foreach (var record in daySchedule[(int)day.Key])
+                                        Console.WriteLine($"{record.Key} -- {record.Value}");
+                                }
                                 break;
                             case ConsoleKey.D5:
                             case ConsoleKey.NumPad5:
