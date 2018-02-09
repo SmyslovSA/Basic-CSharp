@@ -37,7 +37,7 @@ namespace Lecture_1_6
                             case ConsoleKey.NumPad1:
                                 Console.WriteLine("Set product name: ");
                                 string productAdd = Console.ReadLine();
-                                while (string.IsNullOrWhiteSpace(productAdd) | purchase.Keys.Contains(productAdd))
+                                while (string.IsNullOrWhiteSpace(productAdd) || purchase.Keys.Contains(productAdd))
                                 {
                                     Console.WriteLine("Wrong or duplicate name, set another name.");
                                     productAdd = Console.ReadLine();
@@ -46,7 +46,7 @@ namespace Lecture_1_6
                                 do
                                 {
                                     Console.WriteLine("Set product price: ");
-                                    Decimal.TryParse(Console.ReadLine(), out price);
+                                    decimal.TryParse(Console.ReadLine(), out price);
                                     if (price <= 0)
                                         Console.WriteLine("Wrong price, set another price.");
                                 }
@@ -83,15 +83,9 @@ namespace Lecture_1_6
                                     break;
                                 }
                                 Console.WriteLine("Price of what product do you want to know? ");
-                                string productChoose = Console.ReadLine();
+                                var productChoose = Console.ReadLine();
                                 if (purchase.Keys.Contains(productChoose))
-                                {
-                                    foreach (KeyValuePair<string, decimal> t in purchase)
-                                    {
-                                        if (t.Key == productChoose)
-                                            Console.WriteLine($"Price of {t.Key} is {t.Value}");
-                                    }
-                                }
+                                            Console.WriteLine($"Price of {productChoose} is {purchase[productChoose]}");
                                 else
                                     Console.WriteLine("Your product is not found");
                                 Console.WriteLine();
@@ -99,15 +93,12 @@ namespace Lecture_1_6
                             case ConsoleKey.D4:
                             case ConsoleKey.NumPad4:
                                 Console.WriteLine("Set price to see what products are more expensive:");
-                                bool isParse = UInt32.TryParse(Console.ReadLine(), out uint expPrice);
-                                if (isParse)
-                                {
-                                    foreach (KeyValuePair<string, decimal> t in purchase)
-                                    {
+                                bool isParse = uint.TryParse(Console.ReadLine(), out uint expPrice);
+                                if (!isParse)
+                                    break;
+                                foreach (KeyValuePair<string, decimal> t in purchase)
                                         if (t.Value > expPrice)
                                             Console.WriteLine($"{t.Key} is {t.Value}");
-                                    }
-                                }
                                 else Console.WriteLine("You set wrong price");
                                 Console.WriteLine();
                                 break;
@@ -120,11 +111,12 @@ namespace Lecture_1_6
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
                     #region option2
-                    // Так как DayOfWeek является ключом для первого словаря, a первый string ключом для второго, то нельзя сделать больше одной записи на каждый день недели,
-                    // а также нельзя сделать две записи в одно и то же время (ну или два одинаковых дела если поменять key и value местами).
-                    // Это нормально для такого словаря или я чего-то не понял? =)
-                    Dictionary<string, string> daySchedule = new Dictionary<string, string>();
+                    Dictionary<string, string>[] daySchedule = new Dictionary<string, string>[7];
                     Dictionary<DayOfWeek, Dictionary<string, string>> weekSchedule = new Dictionary<DayOfWeek, Dictionary<string, string>>();
+                    for (int i = 0; i < daySchedule.Length; i++)
+                        daySchedule[i] = new Dictionary<string, string>();
+                    foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+                        weekSchedule.Add((DayOfWeek)day, daySchedule[(int)day]);
                     while (true)
                     {
                         Console.WriteLine("Please choose option:\n" +
@@ -140,54 +132,70 @@ namespace Lecture_1_6
                         {
                             case ConsoleKey.D1:
                             case ConsoleKey.NumPad1:
-                                Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
-                                bool isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayAdd);
-                                if ((!isParse) || (userDayAdd < DayOfWeek.Sunday || userDayAdd > DayOfWeek.Saturday))
+                                Console.WriteLine("Choose day:");
+                                foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+                                Console.WriteLine($"{day}-{(int)day}");
+                                DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayAdd);
+                                if (!Enum.IsDefined(typeof(DayOfWeek), userDayAdd))
                                 {
                                     Console.WriteLine("Wrong entry");
                                     break;
                                 }
                                 Console.WriteLine("Set time of record:");
                                 string recordTime = Console.ReadLine();
-                                if (daySchedule.Keys.Contains(recordTime))
+                                if (daySchedule[(int)userDayAdd].Keys.Contains(recordTime))
                                 {
                                     Console.WriteLine("Duplicate times. Wrong Entry");
                                     break;
                                 }
                                 Console.WriteLine("Set name of record:");
                                 string recordName = Console.ReadLine();
-                                daySchedule.Add(recordTime, recordName);
-                                weekSchedule.Add(userDayAdd, daySchedule);
+                                daySchedule[(int)userDayAdd].Add(recordTime, recordName);
                                 break;
                             case ConsoleKey.D2:
                             case ConsoleKey.NumPad2:
-                                Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
-                                isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayRemove);
-                                if ((!isParse) || (userDayRemove < DayOfWeek.Sunday || userDayRemove > DayOfWeek.Saturday))
+                                Console.WriteLine("Choose day:");
+                                foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+                                    Console.WriteLine($"{day}-{(int)day}");
+                                DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayRemove);
+                                if (!Enum.IsDefined(typeof(DayOfWeek), userDayRemove))
                                 {
                                     Console.WriteLine("Wrong entry");
                                     break;
                                 }
-                                weekSchedule.Remove(userDayRemove);
-                                Console.WriteLine($"Record for {userDayRemove} was removed");
+                                if (daySchedule[(int)userDayRemove].Count == 0)
+                                {
+                                    Console.WriteLine($"No records for {userDayRemove}");
+                                    break;
+                                }
+                                Console.WriteLine("What time you want to delete?");
+                                foreach (var pair in daySchedule[(int)userDayRemove])
+                                    Console.Write($"{pair.Key} ({pair.Value})\t");
+                                string userRemove = Console.ReadLine();
+                                if (daySchedule[(int)userDayRemove].ContainsKey(userRemove))
+                                {
+                                    daySchedule[(int)userDayRemove].Remove(userRemove);
+                                    Console.WriteLine($"Record  was removed");
+                                }
+                                else Console.WriteLine("No record for that time");
                                 break;
                             case ConsoleKey.D3:
                             case ConsoleKey.NumPad3:
-                                Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
-                                isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayShow);
-                                if ((!isParse) || (userDayShow < DayOfWeek.Sunday || userDayShow > DayOfWeek.Saturday))
+                                Console.WriteLine("Choose day:");
+                                foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+                                    Console.WriteLine($"{day}-{(int)day}");
+                                DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayShow);
+                                if (!Enum.IsDefined(typeof(DayOfWeek), userDayShow))
                                 {
                                     Console.WriteLine("Wrong entry");
                                     break;
                                 }
-                                if (weekSchedule.Keys.Contains(userDayShow))
-                                    foreach (KeyValuePair<DayOfWeek, Dictionary<string, string>> day in weekSchedule)
-                                    {
-                                        if (userDayShow == day.Key)
-                                            // Непонятно как обратиться к данным {day.Value}, оно возвращает тип данных самого словаря.
-                                            // В debug видно, что пара ключ-значение в Value записана,но синтаксис обращения я так и не нашел =(
-                                            Console.WriteLine($"Schedule on {day.Key} is ");
-                                    }
+                                if (daySchedule[(int)userDayShow].Keys.Count > 0)
+                                {
+                                    Console.WriteLine($"Records for {userDayShow}:");
+                                    foreach (var key in daySchedule[(int)userDayShow])
+                                        Console.WriteLine($"{key.Key} -- {key.Value}");
+                                }
                                 else
                                     Console.WriteLine($"On {userDayShow} no records");
                                 break;
@@ -199,8 +207,12 @@ namespace Lecture_1_6
                                     break;
                                 }
                                 Console.WriteLine("Schedule on week:");
-                                foreach (KeyValuePair<DayOfWeek, Dictionary<string, string>> day in weekSchedule)
-                                    Console.WriteLine($"Schedule on {day.Key} is ");
+                                foreach (var day in weekSchedule)
+                                {
+                                    Console.WriteLine($"Schedule on {day.Key} is:");
+                                    foreach (var record in daySchedule[(int)day.Key])
+                                        Console.WriteLine($"{record.Key} -- {record.Value}");
+                                }
                                 break;
                             case ConsoleKey.D5:
                             case ConsoleKey.NumPad5:
