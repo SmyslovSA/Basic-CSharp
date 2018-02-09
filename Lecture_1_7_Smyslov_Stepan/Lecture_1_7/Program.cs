@@ -51,7 +51,7 @@ namespace Lecture_1_7
                         Console.WriteLine("Введите фамилию");
                         string lastName = Console.ReadLine();
                         Console.WriteLine("Введите год рождения автора");
-                        UInt32.TryParse(Console.ReadLine(), out uint result);
+                        uint.TryParse(Console.ReadLine(), out uint result);
                         if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(lastName) || result == 0)
                         {
                             Console.WriteLine("Некорректный ввод");
@@ -64,19 +64,19 @@ namespace Lecture_1_7
                         Console.WriteLine("Введите название книги");
                         string bookName = Console.ReadLine();
                         Console.WriteLine("Введите жанр");
-                        bool isParse = Enum.TryParse(Console.ReadLine(), out Genre genre);
+                        Enum.TryParse(Console.ReadLine(), out Genre genre);
                         Console.WriteLine("Введите фамилию автора");
                         string authorName = Console.ReadLine().ToUpper();
                         Author bookAuthorName = null;
                         foreach (var aut in author.list)
                             if (aut.LastName.ToUpper() == authorName)
                                 bookAuthorName = aut;
-                        if (string.IsNullOrWhiteSpace(bookName) || bookAuthorName == null || (!isParse) || (genre < Genre.Historical) || (genre > Genre.Fiction))
+                        if (string.IsNullOrWhiteSpace(bookName) || bookAuthorName == null || (!Enum.IsDefined(typeof(Genre),genre)))
                         {
                             Console.WriteLine("Некорректный ввод");
                             break;
                         }
-                        newLibrary.library.Add(new Book() { Name = bookName, Genre = (Genre)genre, AuthorName = bookAuthorName, IsInStock = true });
+                        newLibrary.library.Add(new Book() { Name = bookName, Genre = genre, AuthorName = bookAuthorName, IsInStock = true });
                         Console.WriteLine($"Книга {bookName} успешно добавлена в библиотеку");
                         break;
                     case ConsoleKey.D3:

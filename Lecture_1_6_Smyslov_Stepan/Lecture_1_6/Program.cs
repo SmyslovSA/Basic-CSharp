@@ -37,9 +37,7 @@ namespace Lecture_1_6
                             case ConsoleKey.NumPad1:
                                 Console.WriteLine("Set product name: ");
                                 string productAdd = Console.ReadLine();
-
-                                // TODO двойное ИЛИ для исключения ненужной проверки.
-                                while (string.IsNullOrWhiteSpace(productAdd) | purchase.Keys.Contains(productAdd))
+                                while (string.IsNullOrWhiteSpace(productAdd) || purchase.Keys.Contains(productAdd))
                                 {
                                     Console.WriteLine("Wrong or duplicate name, set another name.");
                                     productAdd = Console.ReadLine();
@@ -48,8 +46,7 @@ namespace Lecture_1_6
                                 do
                                 {
                                     Console.WriteLine("Set product price: ");
-                                    // TODO следует использовать псевдонимы
-                                    Decimal.TryParse(Console.ReadLine(), out price);
+                                    decimal.TryParse(Console.ReadLine(), out price);
                                     if (price <= 0)
                                         Console.WriteLine("Wrong price, set another price.");
                                 }
@@ -86,17 +83,9 @@ namespace Lecture_1_6
                                     break;
                                 }
                                 Console.WriteLine("Price of what product do you want to know? ");
-                                string productChoose = Console.ReadLine();
+                                var productChoose = Console.ReadLine();
                                 if (purchase.Keys.Contains(productChoose))
-                                {
-                                    // todo foreach(var pair ... <- чтобы было меньше текста.
-                                    // todo если вы уже проврерили что есть продукт, замеч вам тут foreach??
-                                    foreach (KeyValuePair<string, decimal> t in purchase)
-                                    {
-                                        if (t.Key == productChoose)
-                                            Console.WriteLine($"Price of {t.Key} is {t.Value}");
-                                    }
-                                }
+                                            Console.WriteLine($"Price of {productChoose} is {purchase[productChoose]}");
                                 else
                                     Console.WriteLine("Your product is not found");
                                 Console.WriteLine();
@@ -104,22 +93,12 @@ namespace Lecture_1_6
                             case ConsoleKey.D4:
                             case ConsoleKey.NumPad4:
                                 Console.WriteLine("Set price to see what products are more expensive:");
-                                // todo пользуемся псевдонимы
-                                bool isParse = UInt32.TryParse(Console.ReadLine(), out uint expPrice);
-                                // TODO if(!isParse) break <- уменьшаем вложенность.
-                                if (isParse)
-                                {
-                                    
-
-                                bool isParse = UInt32.TryParse(Console.ReadLine(), out uint expPrice);
-                                if (isParse)
-                                {
-                                    foreach (KeyValuePair<string, decimal> t in purchase)
-                                    {
+                                bool isParse = uint.TryParse(Console.ReadLine(), out uint expPrice);
+                                if (!isParse)
+                                    break;
+                                foreach (KeyValuePair<string, decimal> t in purchase)
                                         if (t.Value > expPrice)
                                             Console.WriteLine($"{t.Key} is {t.Value}");
-                                    }
-                                }
                                 else Console.WriteLine("You set wrong price");
                                 Console.WriteLine();
                                 break;
@@ -132,9 +111,6 @@ namespace Lecture_1_6
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
                     #region option2
-                    // Так как DayOfWeek является ключом для первого словаря, a первый string ключом для второго, то нельзя сделать больше одной записи на каждый день недели,
-                    // а также нельзя сделать две записи в одно и то же время (ну или два одинаковых дела если поменять key и value местами).
-                    // Это нормально для такого словаря или я чего-то не понял? =)
                     Dictionary<string, string> daySchedule = new Dictionary<string, string>();
                     Dictionary<DayOfWeek, Dictionary<string, string>> weekSchedule = new Dictionary<DayOfWeek, Dictionary<string, string>>();
                     while (true)
@@ -152,13 +128,11 @@ namespace Lecture_1_6
                         {
                             case ConsoleKey.D1:
                             case ConsoleKey.NumPad1:
-                                Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
-                                // TODO Foreach var dow in DayOfWeek write "{dow}-{(int)dow}"... Там проще =)
+                                Console.WriteLine("Choose day:");
+                                foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+                                Console.WriteLine($"{day}-{(int)day}");
                                 bool isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayAdd);
-                                // TODO MSDN тоже надо пользовать =) Enum.IsDefined(typeof(DayOfWeek), userDayAdd)
-
-                                bool isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayAdd);
-                                if ((!isParse) || (userDayAdd < DayOfWeek.Sunday || userDayAdd > DayOfWeek.Saturday))
+                                if (Enum.IsDefined(typeof(DayOfWeek), userDayAdd))
                                 {
                                     Console.WriteLine("Wrong entry");
                                     break;
@@ -174,19 +148,15 @@ namespace Lecture_1_6
                                 string recordName = Console.ReadLine();
                                 daySchedule.Add(recordTime, recordName);
                                 // TODO а вот тут у вас ошибка серьёзная... в итоге все дни недели ссылаются на 1 словарь 
-
                                 weekSchedule.Add(userDayAdd, daySchedule);
                                 break;
                             case ConsoleKey.D2:
                             case ConsoleKey.NumPad2:
-                                // TODO смотрим выже
-                                Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
+                                Console.WriteLine("Choose day:");
+                                foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+                                    Console.WriteLine($"{day}-{(int)day}");
                                 isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayRemove);
-                                // TODO смотрим выже
-
-                                Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
-                                isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayRemove);
-                                if ((!isParse) || (userDayRemove < DayOfWeek.Sunday || userDayRemove > DayOfWeek.Saturday))
+                                if (Enum.IsDefined(typeof(DayOfWeek), userDayRemove))
                                 {
                                     Console.WriteLine("Wrong entry");
                                     break;
@@ -196,26 +166,20 @@ namespace Lecture_1_6
                                 break;
                             case ConsoleKey.D3:
                             case ConsoleKey.NumPad3:
-                                // TODO смотрим выже
-                                Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
+                                Console.WriteLine("Choose day:");
+                                foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+                                    Console.WriteLine($"{day}-{(int)day}");
                                 isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayShow);
-                                // TODO смотрим выже
-
-                                Console.WriteLine("Choose day:\n Monday-1\n Tuesday-2\n Wednesday-3\n Thursday-4\n Friday-5\n Saturday-6\n Sunday-0\n");
-                                isParse = DayOfWeek.TryParse(Console.ReadLine(), out DayOfWeek userDayShow);
-                                if ((!isParse) || (userDayShow < DayOfWeek.Sunday || userDayShow > DayOfWeek.Saturday))
+                                if (Enum.IsDefined(typeof(DayOfWeek), userDayShow))
                                 {
                                     Console.WriteLine("Wrong entry");
                                     break;
                                 }
                                 if (weekSchedule.Keys.Contains(userDayShow))
                                     // TODO та же ошибка что и в случае корзины - если проверили наличие можно было обращаться через [ключ] 
-
                                     foreach (KeyValuePair<DayOfWeek, Dictionary<string, string>> day in weekSchedule)
                                     {
                                         if (userDayShow == day.Key)
-                                            // Непонятно как обратиться к данным {day.Value}, оно возвращает тип данных самого словаря.
-                                            // В debug видно, что пара ключ-значение в Value записана,но синтаксис обращения я так и не нашел =(
                                             Console.WriteLine($"Schedule on {day.Key} is ");
                                     }
                                 else
@@ -232,7 +196,6 @@ namespace Lecture_1_6
                                 foreach (KeyValuePair<DayOfWeek, Dictionary<string, string>> day in weekSchedule)
                                     Console.WriteLine($"Schedule on {day.Key} is ");
                                     // TODO я так понимаю ты вы забыли сделать вывод day.valye?
-
                                 break;
                             case ConsoleKey.D5:
                             case ConsoleKey.NumPad5:
