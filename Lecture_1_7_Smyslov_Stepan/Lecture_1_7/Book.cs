@@ -1,4 +1,6 @@
-﻿namespace Lecture_1_7
+using System;
+using System.Collections.Generic;
+namespace Lecture_1_7
 {
     class Book
     {

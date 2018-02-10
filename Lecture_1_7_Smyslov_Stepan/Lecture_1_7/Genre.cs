@@ -1,4 +1,5 @@
-﻿namespace Lecture_1_7
+﻿using System;
+namespace Lecture_1_7
 {
     enum Genre
     {

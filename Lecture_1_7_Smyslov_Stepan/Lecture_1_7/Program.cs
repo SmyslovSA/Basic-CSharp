@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace Lecture_1_7
 {
     internal class Program
@@ -62,7 +61,6 @@ namespace Lecture_1_7
                         Console.WriteLine(".На складе - да");
                     else Console.WriteLine(".На складе - нет");
                 }
-
                 // TODO В отдельный метод, который печатает меню и возвращает выбор.
                 Console.WriteLine("Добавить автора - 1 \t\t Добавить книгу-2 \t\t Выход-3");
                 var consoleKeyInfo = Console.ReadKey();
