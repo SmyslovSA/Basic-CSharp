@@ -42,10 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Author.cs" />
-    <Compile Include="Book.cs" />
-    <Compile Include="Genre.cs" />
-    <Compile Include="Library.cs" />
+    <Compile Include="Library\Author.cs" />
+    <Compile Include="Library\Book.cs" />
+    <Compile Include="ConsoleHelper.cs" />
+    <Compile Include="Library\Genre.cs" />
+    <Compile Include="Library\Library.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
