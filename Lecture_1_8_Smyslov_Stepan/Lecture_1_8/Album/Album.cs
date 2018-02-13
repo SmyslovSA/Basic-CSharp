@@ -3,17 +3,22 @@ using System.Collections.Generic;
 
 namespace Lecture_1_8
 {
-   public class Album
+    public class Album
     {
+        // TODO Значение инициализируется только в конструкторе
+        // можно спокойно ставить readonly
         private List<Song> _album;
+
         public Album()
         {
             _album = new List<Song>();
         }
+
         public Album(List<Song> list)
         {
             _album = list;
         }
+
         public Song this[int i]
         {
             get { return IndexIsInRange(i) ? _album[i] : null; }
@@ -23,6 +28,7 @@ namespace Lecture_1_8
                 _album[i] = value;
             }
         }
+
         public bool IndexIsInRange(int index)
         {
             return index >= 0 && index < _album.Count;
@@ -32,6 +38,7 @@ namespace Lecture_1_8
         {
             if (song != null) _album.Add(song);
         }
+
         public void SetTestAlbum(Album album)
         {
             var newSong = new Song();

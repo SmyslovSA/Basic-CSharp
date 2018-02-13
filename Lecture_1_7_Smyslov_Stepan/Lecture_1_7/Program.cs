@@ -1,4 +1,6 @@
 ﻿using System;
+using Lecture_1_7.LibraryClasses;
+
 namespace Lecture_1_7
 {
     internal class Program

@@ -1,8 +1,11 @@
 ﻿using System;
+using Lecture_1_7.LibraryClasses;
+
 namespace Lecture_1_7
 {
     static class ConsoleHelper
     {
+        // TODO нерпавильная последовательность -> public static
         static public void BooksInLibrary(Library library)
         {
             Console.Clear();
@@ -14,6 +17,7 @@ namespace Lecture_1_7
                 Console.WriteLine(book.IsInStock ? "да" : "нет");
             }
         }
+
         static public ConsoleKeyInfo UserChoise()
         {
             Console.WriteLine("Добавить автора - 1 \t\t Добавить книгу-2 \t\t Выход-3");
@@ -21,6 +25,7 @@ namespace Lecture_1_7
             Console.WriteLine();
             return consoleKeyInfo;
         }
+
         static public string[] AddAuthor()
         {
             Console.WriteLine("Введите имя");
@@ -42,6 +47,7 @@ namespace Lecture_1_7
             Console.ReadLine();
             return correctInput;
         }
+
         static public string[] AddBook()
         {
             Console.WriteLine("Введите название книги");
@@ -50,10 +56,11 @@ namespace Lecture_1_7
             var genre = Console.ReadLine();
             Console.WriteLine("Введите фамилию автора");
             var authorName = Console.ReadLine().ToUpper();
-            var userInput = new string[] {bookName, genre, authorName };
+            var userInput = new string[] {bookName, genre, authorName};
             return userInput;
         }
-        static public void BookInputOption(bool isInput,string bookName)
+
+        static public void BookInputOption(bool isInput, string bookName)
         {
             Console.WriteLine(isInput ? $"Книга {bookName} успешно добавлена в библиотеку" : "Некорректный ввод");
             Console.ReadLine();
