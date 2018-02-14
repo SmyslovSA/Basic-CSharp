@@ -8,8 +8,8 @@ namespace Lecture_1_7
         private static void Main(string[] args)
         {
             var newLibrary = new Library();
-            var startAuthorArray = newLibrary.SetStartAuthors();
-            var startBookArray = newLibrary.SetStartBooks(startAuthorArray);
+            var startAuthorArray = newLibrary.GetStartAuthors();
+            var startBookArray = newLibrary.GetStartBooks(startAuthorArray);
             newLibrary.StartAddToLibrary(startAuthorArray, startBookArray, newLibrary);
             do
             {

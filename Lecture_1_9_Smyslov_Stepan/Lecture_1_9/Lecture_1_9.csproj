@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FBE80DB5-A792-437A-9DD3-B07ACD610E19}</ProjectGuid>
+    <ProjectGuid>{10AD5C17-30EF-4E88-9B6F-CF49DE89A80F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Lecture_1_8</RootNamespace>
-    <AssemblyName>Lecture_1_8</AssemblyName>
+    <RootNamespace>Lecture_1_9</RootNamespace>
+    <AssemblyName>Lecture_1_9</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,11 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlbumClasses\Album.cs" />
     <Compile Include="ConsoleHelper.cs" />
+    <Compile Include="PredictionClasses\Prediction.cs" />
+    <Compile Include="PredictionClasses\Time.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AlbumClasses\Song.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

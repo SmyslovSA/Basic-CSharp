@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lecture_1_8
+namespace Lecture_1_8.AlbumClasses
 {
     public class Album
     {
-        // TODO Значение инициализируется только в конструкторе
-        // можно спокойно ставить readonly
-        private List<Song> _album;
+        private readonly List<Song> _album;
 
         public Album()
         {

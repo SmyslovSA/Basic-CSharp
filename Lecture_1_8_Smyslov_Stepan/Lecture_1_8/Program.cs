@@ -1,4 +1,5 @@
 ﻿using System;
+using Lecture_1_8.AlbumClasses;
 
 namespace Lecture_1_8
 {
@@ -14,21 +15,19 @@ namespace Lecture_1_8
                 switch (number)
                 {
                     case ConsoleKey.D1:
-                        // TODO В Обращении к типу Program нет необходимости
-                        // Вы и так работаете в рамках этого класса
                         Play(newAlbum);
                         break;
                     case ConsoleKey.D2:
                         var choise1 = ConsoleHelper.UserChoiseList();
-                        Program.Play(newAlbum, choise1);
+                        Play(newAlbum, choise1);
                         break;
                     case ConsoleKey.D3:
-                        var choise2 = ConsoleHelper.UserChoiseList2();
-                        Program.Play(newAlbum, choise2[0], choise2[1]);
+                        ConsoleHelper.UserChoiseList2(out int choose2,out int choose3);
+                        Play(newAlbum, choose2, choose3);
                         break;
                     case ConsoleKey.D4:
-                        var choise3 = ConsoleHelper.UserAddSong();
-                        var song = new Song(choise3[0], choise3[1]);
+                        ConsoleHelper.UserAddSong(out string songName, out string songAuthor);
+                        var song = new Song(songName,songAuthor);
                         newAlbum.AddSong(song);
                         break;
                     case ConsoleKey.D5:
@@ -40,20 +39,19 @@ namespace Lecture_1_8
         static void Play(Album album)
         {
             Console.WriteLine("All songs:");
-            Program.WriteTracklist(album, 0, 0);
+            WriteTracklist(album, 0, 0);
         }
 
-        // TODO Ошибка в логике - должно было проигрывать от i до конца
         static void Play(Album album, int index)
         {
             Console.WriteLine($"Songs from {index}:");
-            Program.WriteTracklist(album, index, index);
+            WriteTracklist(album, index, index);
         }
 
         static void Play(Album album, int index, int index2)
         {
             Console.WriteLine($"Songs from {index} to {index2}:");
-            Program.WriteTracklist(album, index, index2);
+            WriteTracklist(album, index, index2);
         }
 
         static void WriteTracklist(Album album, int index, int index2)

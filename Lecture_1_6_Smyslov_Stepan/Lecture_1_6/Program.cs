@@ -85,7 +85,6 @@ namespace Lecture_1_6
                                 }
                                 Console.WriteLine("Price of what product do you want to know? ");
                                 var productChoose = Console.ReadLine();
-                                // TODO тернарник
                                 Console.WriteLine(purchase.Keys.Contains(productChoose)
                                     ? $"Price of {productChoose} is {purchase[productChoose]}"
                                     : "Your product is not found");
@@ -98,7 +97,6 @@ namespace Lecture_1_6
                                 if (!isParse)
                                     break;
                                 foreach (KeyValuePair<string, decimal> t in purchase)
-                                    // TODO тернарник
                                     Console.WriteLine(t.Value > expPrice
                                         ? $"{t.Key} is {t.Value}"
                                         : "You set wrong price");

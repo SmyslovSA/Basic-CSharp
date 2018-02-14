@@ -8,19 +8,17 @@ namespace Lecture_1_7.LibraryClasses
         public readonly List<Book> BookLibrary = new List<Book>();
         public readonly List<Author> AuthorLibrary = new List<Author>();
 
-        // INIT, BUILD, GET, CREATE - вы тут ничего не устанавливаете. Не правильно выбрано название
-        public Author[] SetStartAuthors()
+        public Author[] GetStartAuthors()
         {
-            var author1 = new Author {Name = "Герберт", LastName = "Шилдт", DoB = 1959};
-            var author2 = new Author {Name = "Джеффри", LastName = "Рихтер", DoB = 1965};
-            var author3 = new Author {Name = "Джордж", LastName = "Оруэлл", DoB = 1950};
-            var author4 = new Author {Name = "Джон", LastName = "Толкин", DoB = 1914};
+            var author1 = new Author {Name = "Герберт", LastName = "Шилдт", YoB = 1959};
+            var author2 = new Author {Name = "Джеффри", LastName = "Рихтер", YoB = 1965};
+            var author3 = new Author {Name = "Джордж", LastName = "Оруэлл", YoB = 1950};
+            var author4 = new Author {Name = "Джон", LastName = "Толкин", YoB = 1914};
             Author[] authors = {author1, author2, author3, author4};
             return authors;
         }
 
-        // TODO см. выше
-        public Book[] SetStartBooks(Author[] author)
+        public Book[] GetStartBooks(Author[] author)
         {
             var book1 = new Book
             {
@@ -63,7 +61,7 @@ namespace Lecture_1_7.LibraryClasses
             {
                 Name = userInput[0],
                 LastName = userInput[1],
-                DoB = uint.Parse(userInput[2])
+                YoB = uint.Parse(userInput[2])
             });
         }
 
