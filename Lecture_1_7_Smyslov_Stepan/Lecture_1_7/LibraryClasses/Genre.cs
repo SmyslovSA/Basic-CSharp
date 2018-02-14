@@ -1,5 +1,4 @@
-﻿using System;
-namespace Lecture_1_7
+﻿namespace Lecture_1_7.LibraryClasses
 {
     enum Genre
     {

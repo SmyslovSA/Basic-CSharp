@@ -1,5 +1,4 @@
-using System;
-namespace Lecture_1_7
+namespace Lecture_1_7.LibraryClasses
 {
     class Book
     {
@@ -12,6 +11,7 @@ namespace Lecture_1_7
         {
             IsInStock = true;
         }
+
         public void SetBookUnavailable()
         {
             IsInStock = false;
