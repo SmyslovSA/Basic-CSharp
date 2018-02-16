@@ -11,10 +11,7 @@ namespace Lecture_1_9
             while (true)
             {
                 var userChoise = (Time)ConsoleHelper.Greetings().Key;
-
-                // TODO не нашли один момент
                 while (!Enum.IsDefined(typeof(Time), userChoise))
-                // while (!IsAllowable(userChoise))
                 {
                     ConsoleHelper.WrongInfo();
                     userChoise = (Time)ConsoleHelper.Greetings().Key;
@@ -38,11 +35,6 @@ namespace Lecture_1_9
             Console.WriteLine(prediction);
             Console.ReadKey();
             Console.Clear();
-        }
-
-        static bool IsAllowable(Time time)
-        {
-            return time >= Time.Today && time <= Time.Month;
         }
     }
 }
