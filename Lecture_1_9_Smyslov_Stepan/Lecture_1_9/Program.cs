@@ -11,7 +11,10 @@ namespace Lecture_1_9
             while (true)
             {
                 var userChoise = (Time)ConsoleHelper.Greetings().Key;
-                while (!IsAllowable(userChoise))
+
+                // TODO не нашли один момент
+                while (!Enum.IsDefined(typeof(Time), userChoise))
+                // while (!IsAllowable(userChoise))
                 {
                     ConsoleHelper.WrongInfo();
                     userChoise = (Time)ConsoleHelper.Greetings().Key;

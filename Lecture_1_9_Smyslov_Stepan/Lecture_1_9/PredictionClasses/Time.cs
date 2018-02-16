@@ -2,7 +2,7 @@
 
 namespace Lecture_1_9.PredictionClasses
 {
-    public enum Time:byte
+    public enum Time : byte
     {
         Today = ConsoleKey.D1,
         Tomorrow,
