@@ -9,7 +9,7 @@ namespace Lecture_1_9_2
         {
             var group = new StudentGroup();
             GetStartParameters(group);
-            ConsoleInfo(group);           
+            ConsoleInfo(group);
         }
 
         static void GetStartParameters(StudentGroup group)
@@ -24,7 +24,7 @@ namespace Lecture_1_9_2
             student1.AddMark(new Mark("History", DateTime.Today, 9));
             student1.AddMark(new Mark("History", DateTime.Today, 1));
 
-            student2.AddMark (new Mark("History", DateTime.Today, 5));
+            student2.AddMark(new Mark("History", DateTime.Today, 5));
             student2.AddMark(new Mark("History", DateTime.Today, 9));
             student2.AddMark(new Mark("History", DateTime.Today, 0));
             student2.AddMark(new Mark("History", DateTime.Today, 2));
@@ -38,7 +38,7 @@ namespace Lecture_1_9_2
 
             group.AddStudent(student1);
             group.AddStudent(student2);
-            group.AddStudent(student3);           
+            group.AddStudent(student3);
         }
 
         static void ConsoleInfo(StudentGroup group)
