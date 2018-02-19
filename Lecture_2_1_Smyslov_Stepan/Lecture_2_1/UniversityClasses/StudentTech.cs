@@ -2,6 +2,7 @@
 {
     public class StudentTech : Student
     {
+        // TODO Константы с большой =)
         const LectionsTypes specialization = LectionsTypes.Technical;
         public StudentTech(string name, string lastName) : base(name, lastName) { }
 

@@ -14,6 +14,7 @@ namespace Lecture_2_1.University
             _lections = new List<Lection>();
         }
 
+
         public void AddHuman(Human human)
         {
             if (human != null) _peoples.Add(human);
@@ -21,6 +22,7 @@ namespace Lecture_2_1.University
 
         public int CountHuman()
         {
+            // TODO Вызвали вместо свойства метод зачемто
             return _peoples.Count();
         }
 
@@ -34,6 +36,7 @@ namespace Lecture_2_1.University
             return _lections.Count();
         }
 
+        // TODO Readonly свойство наверное напрашивается?
         public List<Lection> GetLections()
         {
             return _lections;
@@ -44,6 +47,7 @@ namespace Lecture_2_1.University
             return _peoples;
         }
 
+        // TODO Лучше в отдельный класс
         public void GetStartParameters()
         {
             var math = new Lection("Mathemathic", LectionsTypes.Technical);

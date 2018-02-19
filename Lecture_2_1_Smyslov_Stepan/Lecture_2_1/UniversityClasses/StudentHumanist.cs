@@ -2,6 +2,7 @@
 {
     public class StudentHumanist : Student
     {
+        // TODO Я вижу дублирование кода. А вы? =)
         const LectionsTypes specialization = LectionsTypes.Humanitarian;
         public StudentHumanist(string name, string lastName) : base(name, lastName) { }
 
