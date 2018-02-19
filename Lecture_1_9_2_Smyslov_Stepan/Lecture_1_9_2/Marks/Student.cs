@@ -50,34 +50,12 @@ namespace Lecture_1_9_2.Marks
 
         public int GetMaxMark()
         {
-            // TODO Так быстрее =)
             return _marks.Max().MarkNumber;
-            int i = 0;
-            foreach (var mark in _marks)
-            {
-                foreach (var newMark in _marks)
-                {
-                    if ((mark.CompareTo(newMark) < 0) && i < newMark.MarkNumber)
-                        i = newMark.MarkNumber;
-                }
-            }
-            return i;
         }
 
         public int GetMinMark()
         {
-            // TODO Так быстрее =)
             return _marks.Min().MarkNumber;
-            int i = 10;
-            foreach (var mark in _marks)
-            {
-                foreach (var newMark in _marks)
-                {
-                    if ((mark.CompareTo(newMark) > 0) && i > newMark.MarkNumber)
-                        i = newMark.MarkNumber;
-                }
-            }
-            return i;
         }
 
         public double GetAverageMark()
@@ -87,8 +65,6 @@ namespace Lecture_1_9_2.Marks
             {
                 sum += mark.MarkNumber;
             }
-            // TODO Не метод а свойство надо вызывать.
-            // return sum / _marks.Count();
             return sum / _marks.Count;
         }
     }

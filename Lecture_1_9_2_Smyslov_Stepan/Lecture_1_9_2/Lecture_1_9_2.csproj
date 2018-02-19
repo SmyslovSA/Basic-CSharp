@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleInfo.cs" />
     <Compile Include="Marks\Mark.cs" />
     <Compile Include="Marks\Student.cs" />
     <Compile Include="Marks\StudentGroup.cs" />

@@ -3,12 +3,12 @@
     public class StudentHumanist : Student
     {
         // TODO Я вижу дублирование кода. А вы? =)
-        const LectionsTypes specialization = LectionsTypes.Humanitarian;
+        const LectionsTypes Specialization = LectionsTypes.Humanitarian;
         public StudentHumanist(string name, string lastName) : base(name, lastName) { }
 
         public override string Learn(LectionsTypes lection)
         {
-            return $"{base.Learn(lection)} is {(lection == specialization ? "studying" : "sleeping")}";
+            return $"{base.Learn(lection)} is {(lection == Specialization ? "studying" : "sleeping")}";
         }
     }
 }
