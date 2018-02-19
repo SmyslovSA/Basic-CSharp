@@ -7,30 +7,33 @@ namespace Lecture_1_9_2.Marks
     public class Student
     {
         private readonly List<Mark> _marks = new List<Mark>();
+
         public Student(string name, string lastName, DateTime dateTime)
         {
             FirstName = name;
             LastName = lastName;
             DoB = dateTime;
-        }   
-        public string FirstName {get; set;}
-        public string LastName {get; set;}
-        public DateTime DoB {get; set;}
+        }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DoB { get; set; }
 
         public void AddMark(Mark mark)
         {
-            if (mark.MarkNumber<=0 || mark.MarkNumber>10) return;
+            if (mark.MarkNumber <= 0 || mark.MarkNumber > 10) return;
             _marks.Add(mark);
         }
 
         public override string ToString()
         {
-            return $"{FirstName} {LastName}. Marks: Max:{this.GetMaxMark()}, Min:{this.GetMinMark()}, Average:{this.GetAverageMark():#.##}";
+            return
+                $"{FirstName} {LastName}. Marks: Max:{this.GetMaxMark()}, Min:{this.GetMinMark()}, Average:{this.GetAverageMark():#.##}";
         }
 
         public override bool Equals(object obj)
         {
-            return obj is Student && this.Equals((Student)obj);
+            return obj is Student && this.Equals((Student) obj);
         }
 
         public bool Equals(Student otherStudent)
@@ -47,12 +50,14 @@ namespace Lecture_1_9_2.Marks
 
         public int GetMaxMark()
         {
+            // TODO Так быстрее =)
+            return _marks.Max().MarkNumber;
             int i = 0;
             foreach (var mark in _marks)
             {
                 foreach (var newMark in _marks)
                 {
-                    if ((mark.CompareTo(newMark) < 0) && i<newMark.MarkNumber)
+                    if ((mark.CompareTo(newMark) < 0) && i < newMark.MarkNumber)
                         i = newMark.MarkNumber;
                 }
             }
@@ -61,6 +66,8 @@ namespace Lecture_1_9_2.Marks
 
         public int GetMinMark()
         {
+            // TODO Так быстрее =)
+            return _marks.Min().MarkNumber;
             int i = 10;
             foreach (var mark in _marks)
             {
@@ -80,7 +87,9 @@ namespace Lecture_1_9_2.Marks
             {
                 sum += mark.MarkNumber;
             }
-            return sum / _marks.Count();
+            // TODO Не метод а свойство надо вызывать.
+            // return sum / _marks.Count();
+            return sum / _marks.Count;
         }
     }
 }
