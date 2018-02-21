@@ -2,11 +2,10 @@
 {
     public class StudentHumanist : StudentSpecialist
     {
-        public StudentHumanist(string name, string lastName) : base(name, lastName,LectionsTypes.Humanitarian)
+        public StudentHumanist(string name, string lastName) : base(name, lastName, LectionsTypes.Humanitarian)
         {
         }
 
         public LectionsTypes Specialization { get; set; }
     }
 }
-

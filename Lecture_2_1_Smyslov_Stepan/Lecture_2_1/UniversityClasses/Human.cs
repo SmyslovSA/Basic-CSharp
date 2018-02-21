@@ -2,7 +2,9 @@
 {
     public class Human
     {
-        public Human():this("John","Dough") { }
+        public Human() : this("John", "Dough")
+        {
+        }
 
         public Human(string name, string lastName)
         {
@@ -10,8 +12,8 @@
             LastName = lastName;
         }
 
-        public string FirstName {get; set;}
-        public string LastName {get; set;}
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         public override string ToString()
         {

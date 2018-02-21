@@ -31,6 +31,7 @@ namespace Lecture_2_1
             {
                 Console.WriteLine($"Lection {lect.LectureName}:");
                 foreach (var teacher in university.GetHumans)
+                    // TODO is as as - слишком много телодвижений, лучше было сразу привести и дальше отталкиваться от null
                     if (teacher is Teacher && lect.LectureName == (teacher as Teacher).Specialization)
                         Console.WriteLine($"{(teacher as Teacher).Work()}");
                 foreach (var student in university.GetHumans)

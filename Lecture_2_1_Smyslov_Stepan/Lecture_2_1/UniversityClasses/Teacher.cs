@@ -7,11 +7,11 @@
             Specialization = lection.LectureName;
         }
 
-        public string Specialization { get; set;}
+        public string Specialization { get; set; }
 
         public virtual string Work()
         {
-           return $"{base.ToString()} Teacher of {Specialization}";
+            return $"{base.ToString()} Teacher of {Specialization}";
         }
     }
 }
