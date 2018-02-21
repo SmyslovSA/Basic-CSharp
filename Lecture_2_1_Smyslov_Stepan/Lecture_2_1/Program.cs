@@ -1,5 +1,4 @@
-﻿using System;
-using Lecture_2_1.University;
+﻿using Lecture_2_1.University;
 
 namespace Lecture_2_1
 {

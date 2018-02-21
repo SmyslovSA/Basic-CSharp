@@ -1,13 +1,11 @@
 ﻿namespace Lecture_2_1.University
 {
-    public class StudentTech : Student
+    public class StudentTech : StudentSpecialist
     {
-        const LectionsTypes Specialization = LectionsTypes.Technical;
-        public StudentTech(string name, string lastName) : base(name, lastName) { }
-
-        public override string Learn(LectionsTypes lection)
+        public StudentTech(string name, string lastName) : base(name, lastName,LectionsTypes.Technical)
         {
-            return $"{base.Learn(lection)} is {(lection == Specialization ? "studying" : "sleeping")}";
         }
+
+        public LectionsTypes Specialization { get; set; }
     }
 }

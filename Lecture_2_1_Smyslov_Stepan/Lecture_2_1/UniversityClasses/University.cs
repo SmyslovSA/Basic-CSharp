@@ -8,8 +8,8 @@ namespace Lecture_2_1.University
         private readonly List<Human> _peoples;
         private readonly List<Lection> _lections;
 
-        public List<Lection> GetLections { get;}
-        public List<Human> GetHumans { get;}
+        public List<Lection> GetLections { get { return _lections; } }
+        public List<Human> GetHumans { get { return _peoples;} }
 
         public Univer()
         {
@@ -34,7 +34,7 @@ namespace Lecture_2_1.University
 
         public int CountLections()
         {
-            return _lections.Count();
+            return _lections.Count;
         }
     }
 }
