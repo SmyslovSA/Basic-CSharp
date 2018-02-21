@@ -10,6 +10,7 @@
             return obj is DepartmentHead && this.Equals((DepartmentHead)obj);
         }
 
+        // TODO Вы не заметили что реализация этого метода слишком похожа на остальные?
         public bool Equals(DepartmentHead otherDepartmentHead)
         {
             return otherDepartmentHead.FirstName == this.FirstName

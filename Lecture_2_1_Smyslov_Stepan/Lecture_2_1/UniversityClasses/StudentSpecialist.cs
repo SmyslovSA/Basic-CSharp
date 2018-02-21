@@ -11,7 +11,7 @@
 
         public override string Learn(LectionsTypes lection)
         {
-                return $"{base.Learn(lection)} {(StudentType == lection? "is studying": "is sleeping")}";
+            return $"{base.Learn(lection)} {(StudentType == lection ? "is studying" : "is sleeping")}";
         }
     }
 }

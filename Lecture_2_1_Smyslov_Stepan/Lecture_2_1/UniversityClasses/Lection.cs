@@ -8,7 +8,7 @@
             LectureType = lectionsTypes;
         }
 
-        public string LectureName {get; set;}
-        public LectionsTypes LectureType {get; set;}
+        public string LectureName { get; set; }
+        public LectionsTypes LectureType { get; set; }
     }
 }
