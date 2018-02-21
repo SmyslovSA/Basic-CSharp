@@ -24,15 +24,15 @@ namespace Lecture_2_1
 
         public void ConsoleInf(Univer university)
         {
-            Console.WriteLine($"Number of lections: {university.CountLections()}");
-            Console.WriteLine($"Number of people: {university.CountHuman()}");
+            Console.WriteLine($"Number of lections: {university.GetLections.Count}");
+            Console.WriteLine($"Number of people: {university.GetHumans.Count}");
             Console.WriteLine();
             foreach (var lect in university.GetLections)
             {
                 Console.WriteLine($"Lection {lect.LectureName}:");
                 foreach (var teacher in university.GetHumans)
                     // TODO is as as - слишком много телодвижений, лучше было сразу привести и дальше отталкиваться от null
-                    if (teacher is Teacher && lect.LectureName == (teacher as Teacher).Specialization)
+                    if((teacher as Teacher)?.Specialization==lect.LectureName)
                         Console.WriteLine($"{(teacher as Teacher).Work()}");
                 foreach (var student in university.GetHumans)
                     if (student is Student)

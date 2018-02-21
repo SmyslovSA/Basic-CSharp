@@ -13,9 +13,7 @@
 
         public bool Equals(Student otherStudent)
         {
-            return otherStudent.FirstName == this.FirstName
-                   && otherStudent.LastName == this.LastName
-                   && otherStudent.Department == this.Department;
+            return base.Equals(otherStudent);
         }
 
         public override int GetHashCode()

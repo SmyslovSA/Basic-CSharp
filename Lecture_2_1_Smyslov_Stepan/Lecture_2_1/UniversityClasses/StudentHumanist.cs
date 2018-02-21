@@ -5,7 +5,5 @@
         public StudentHumanist(string name, string lastName) : base(name, lastName, LectionsTypes.Humanitarian)
         {
         }
-
-        public LectionsTypes Specialization { get; set; }
     }
 }

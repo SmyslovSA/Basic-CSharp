@@ -13,9 +13,7 @@
 
         public bool Equals(Teacher otherTeacher)
         {
-            return otherTeacher.FirstName == this.FirstName
-                   && otherTeacher.LastName == this.LastName
-                   && otherTeacher.Department == this.Department;
+            return base.Equals(otherTeacher);
         }
 
         public override int GetHashCode()
