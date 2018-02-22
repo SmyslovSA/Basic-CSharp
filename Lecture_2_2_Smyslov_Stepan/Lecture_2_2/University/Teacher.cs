@@ -6,21 +6,6 @@
         {
         }
 
-        public override bool Equals(object obj)
-        {
-            return obj is Teacher && this.Equals((Teacher)obj);
-        }
-
-        public bool Equals(Teacher otherTeacher)
-        {
-            return base.Equals(otherTeacher);
-        }
-
-        public override int GetHashCode()
-        {
-            return 1;
-        }
-
         public override string Work()
         {
             return $"{base.ToString()}.I am teaching at {Department} facultate";

@@ -18,12 +18,13 @@
             return obj is UniversityMan && this.Equals((UniversityMan)obj);
         }
 
-        public  bool Equals(UniversityMan universityMan)
+        public bool Equals(UniversityMan universityMan)
         {
             return universityMan.FirstName == this.FirstName
                    && universityMan.LastName == this.LastName
                    && universityMan.Department == this.Department;
         }
+
         public override int GetHashCode()
         {
             return 1;

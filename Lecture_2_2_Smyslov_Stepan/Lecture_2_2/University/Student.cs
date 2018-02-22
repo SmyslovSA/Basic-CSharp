@@ -2,23 +2,8 @@
 {
     public class Student : UniversityMan
     {
-        public Student(string name, string lastName, Facultates facultate):base(name,lastName,facultate)
+        public Student(string name, string lastName, Facultates facultate) :base(name, lastName, facultate)
         {
-        }
-
-        public override bool Equals(object obj)
-        {
-            return obj is Student && this.Equals((Student)obj);
-        }
-
-        public bool Equals(Student otherStudent)
-        {
-            return base.Equals(otherStudent);
-        }
-
-        public override int GetHashCode()
-        {
-            return 1;
         }
 
         public override string Work()
