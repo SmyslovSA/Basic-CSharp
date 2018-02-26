@@ -4,35 +4,38 @@ namespace Lecture_2_2.University
 {
     public class Univer
     {
+        private readonly List<Student> _students;
+        private readonly List<Teacher> _teachers;
+        private readonly List<DepartmentHead> _departmentHead;
         public Univer()
         {
-            Students = new List<Student>();
-            Teachers = new List<Teacher>();
-            DepartmentHeads = new List<DepartmentHead>();
+            _students = new List<Student>();
+            _teachers = new List<Teacher>();
+            _departmentHead = new List<DepartmentHead>();
         }
 
-        public List<Student> Students { get; }
-        public List<Teacher> Teachers { get; }
-        public List<DepartmentHead> DepartmentHeads {get;}
+        public List<Student> Students { get { return _students; } }
+        public List<Teacher> Teachers { get { return _teachers; } }
+        public List<DepartmentHead> DepartmentHeads { get { return _departmentHead; } }
 
         public void AddStudent(Student student)
         {
-            if (student == null || Students.Contains(student)) return;
-            Students.Add(student);
+            if (student == null || _students.Contains(student)) return;
+            _students.Add(student);
         }
 
         public void AddTeacher(Teacher teacher)
         {
-            if (teacher == null || Teachers.Contains(teacher)) return;
-            Teachers.Add(teacher);
+            if (teacher == null || _teachers.Contains(teacher)) return;
+            _teachers.Add(teacher);
         }
 
         public void AddDepartmentHead(DepartmentHead departmentHead)
         {
-            foreach (var head in DepartmentHeads)
+            foreach (var head in _departmentHead)
                 if (head.Department == departmentHead.Department) return;
-            if (departmentHead == null || DepartmentHeads.Contains(departmentHead)) return;
-            DepartmentHeads.Add(departmentHead);
+            if (departmentHead == null || _departmentHead.Contains(departmentHead)) return;
+            _departmentHead.Add(departmentHead);
         }
     }
 }
