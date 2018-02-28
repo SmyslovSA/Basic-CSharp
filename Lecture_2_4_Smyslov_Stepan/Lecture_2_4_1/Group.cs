@@ -6,7 +6,7 @@ namespace Lecture_2_4_1
     {
         private readonly List<Student> _students = new List<Student>();
 
-        public List<Student> Students { get { return _students; } }
+        public List<Student> Students => _students;
 
         public void Compare()
         {

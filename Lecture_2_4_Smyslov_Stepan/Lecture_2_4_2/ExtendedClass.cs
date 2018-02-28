@@ -5,6 +5,7 @@ namespace Lecture_2_4_2
 {
     public static class ExtendedClass
     {
+        // TODO Мне кажется что метод тут называется CarCount
         public static void CarNumbers(this List<Car> cars, out int eCar, out int fCar)
         {
             eCar = fCar = 0;
