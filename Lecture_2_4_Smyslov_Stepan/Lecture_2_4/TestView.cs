@@ -29,8 +29,9 @@ namespace Lecture_2_4
             switch (consoleKeyInfo.Key)
             {
                 case ConsoleKey.D1:
-                    SearchYears years = (year, newBook) => newBook.YearOfWriting >= year;
-                    books = catalog.SearchYears(years,  Int32.Parse(userInput));
+                    // TODO Это вам на подумать - что чёрт возьми тут произошло =)
+                    bool Years(int year, Book newBook) => newBook.YearOfWriting >= year;
+                    books = catalog.SearchYears(Years,  Int32.Parse(userInput));
                     break;
                 case ConsoleKey.D2:
                     SearchYears years1 = (year, newBook) => newBook.YearOfWriting < year;

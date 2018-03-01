@@ -10,15 +10,15 @@ namespace Lecture_2_4_2
             _cars = new List<Car>();
         }
 
-        public List<Car> Cars { get { return _cars; } }
+        public List<Car> Cars => _cars;
 
         public void AddCarToPark(Car car)
         {
-            if (car != null)
-            {
-                _cars.Add(car);
-                car.AddCar();
-            }
+            // TODO Уменьшаем вложенность
+            if (car == null) return;
+
+            _cars.Add(car);
+            car.AddCar();
         }
 
         public void TestAdd()

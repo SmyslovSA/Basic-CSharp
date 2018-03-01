@@ -11,7 +11,9 @@ namespace Lecture_2_4.SearchBook
             _bookList = new List<Book>();
         }
 
-        public List<Book> Books { get { return _bookList; } }
+        // TODO C# 6.0
+        public List<Book> Books => _bookList;
+        // public List<Book> Books { get { return _bookList; } }
         public List<Book> SearchString(SearchName search,string searchText)
         {
             var newList = new List<Book>();
