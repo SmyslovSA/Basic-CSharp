@@ -4,7 +4,6 @@ namespace Lecture_2_4_2
 {
     public abstract class Car
     {
-        // TODO Его всё равно никто не будет вызывать то, кроме наследников
         protected Car()
         {
             Brand = Rnd.RandomBrand;

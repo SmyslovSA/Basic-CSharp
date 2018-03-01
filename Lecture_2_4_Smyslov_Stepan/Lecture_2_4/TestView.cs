@@ -34,8 +34,7 @@ namespace Lecture_2_4
                     books = catalog.SearchYears(Years,  Int32.Parse(userInput));
                     break;
                 case ConsoleKey.D2:
-                    SearchYears years1 = (year, newBook) => newBook.YearOfWriting < year;
-                    books = catalog.SearchYears(years1, Int32.Parse(userInput));
+                    books = catalog.SearchYears((year, newbook) => newbook.YearOfWriting < year, Int32.Parse(userInput));
                     break;
                 case ConsoleKey.D3:
                     SearchName search1 = (search, newBook) => newBook.AuthorFullName.ToUpper() == search.ToUpper();

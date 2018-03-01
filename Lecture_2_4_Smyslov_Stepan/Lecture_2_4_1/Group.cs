@@ -10,7 +10,7 @@ namespace Lecture_2_4_1
 
         public void Compare()
         {
-            _students.Sort(new StudentSorter());
+            _students.Sort();
         }
 
         public void Action(GetStudents getStudents)

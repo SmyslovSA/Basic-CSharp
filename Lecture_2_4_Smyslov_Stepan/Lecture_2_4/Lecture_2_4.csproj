@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SearchBook\Book.cs" />
-    <Compile Include="SearchBook\BookSorter.cs" />
     <Compile Include="SearchBook\Catalog.cs" />
     <Compile Include="SearchBook\BookSorting.cs" />
     <Compile Include="Program.cs" />

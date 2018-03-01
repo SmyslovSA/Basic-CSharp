@@ -1,8 +1,9 @@
-﻿using Lecture_2_4_1.Helper;
+﻿using System;
+using Lecture_2_4_1.Helper;
 
 namespace Lecture_2_4_1
 {
-    public class Student
+    public class Student : IComparable<Student>
     {
         public Student()
         {
@@ -28,6 +29,11 @@ namespace Lecture_2_4_1
         {
             if (AvgMark + changer < 9 && AvgMark - changer > 0)
                 AvgMark += changer;
+        }
+
+        public int CompareTo(Student other)
+        {
+            return this.AvgMark.CompareTo(other.AvgMark);
         }
     }
 }

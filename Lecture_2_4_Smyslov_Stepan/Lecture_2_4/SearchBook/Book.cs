@@ -1,6 +1,7 @@
-﻿namespace Lecture_2_4.SearchBook
+﻿using System;
+namespace Lecture_2_4.SearchBook
 {
-    public class Book
+    public class Book : IComparable<Book>
     {
         public string BookName { get; set; }
         public string AuthorFullName { get; set; }
@@ -11,6 +12,11 @@
             BookName = bookName;
             AuthorFullName = author;
             YearOfWriting = year;
+        }
+
+        public int CompareTo(Book other)
+        {
+            return this.BookName.CompareTo(other.BookName);
         }
 
         public override string ToString()

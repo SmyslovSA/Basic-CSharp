@@ -1,5 +1,6 @@
-﻿namespace Lecture_2_4.SearchBook
-// TODO Не правильный namespace
+﻿using Lecture_2_4.SearchBook;
+
+namespace Lecture_2_4
 {
     class Program
     {

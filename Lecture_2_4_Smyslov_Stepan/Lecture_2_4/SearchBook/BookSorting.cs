@@ -6,7 +6,7 @@ namespace Lecture_2_4.SearchBook
     {
         public static void Sorting(List<Book> list)
         {
-            list.Sort(new BookSorter());
+            list.Sort();
         }
     }
 }

@@ -14,9 +14,7 @@ namespace Lecture_2_4_2
 
         public void AddCarToPark(Car car)
         {
-            // TODO Уменьшаем вложенность
             if (car == null) return;
-
             _cars.Add(car);
             car.AddCar();
         }

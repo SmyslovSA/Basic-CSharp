@@ -1,4 +1,6 @@
-﻿namespace Lecture_2_4_2
+﻿using System;
+
+namespace Lecture_2_4_2
 {
     class Program
     {
@@ -7,9 +9,10 @@
             var carpark = new CarPark();
             carpark.TestAdd();
             carpark.AddCarToPark(new ElectroCar());
-            // TODO неиспользуемые переменные
-            carpark.Cars.CarNumbers(out int eCar, out int fCar);
+            carpark.Cars.CarCount(out int eCar, out int fCar);
             var list = carpark.Cars.CarPrice(1000);
+            // TODO перенести cw в другое место
+            Console.WriteLine($"In park {eCar} electo cars and {fCar} fuel cars");
         }
     }
 }
