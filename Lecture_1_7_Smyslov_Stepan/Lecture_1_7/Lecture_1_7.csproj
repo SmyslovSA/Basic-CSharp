@@ -45,6 +45,7 @@
     <Compile Include="LibraryClasses\Author.cs" />
     <Compile Include="LibraryClasses\Book.cs" />
     <Compile Include="ConsoleHelper.cs" />
+    <Compile Include="LibraryClasses\date.cs" />
     <Compile Include="LibraryClasses\Genre.cs" />
     <Compile Include="LibraryClasses\Library.cs" />
     <Compile Include="Program.cs" />
